@@ -78,5 +78,41 @@ namespace LabFilters
             Filters filter = new GaussianFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
+
+        private void чёрнобелоеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new GrayScaleFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void сепияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new Sepia();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void яркостьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new Brightness();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void фильтрСобеляToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new SobelFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void резкостьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new Sharpness();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void тиснениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new Embossing();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
     }
 }
