@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabFilters
 {
-    internal class RotateRight : MatrixFilter
+    internal class RotateRight : Filters
     {
         protected override Color calculateNewPixelColor(Bitmap sourceImage, int x, int y)
         {

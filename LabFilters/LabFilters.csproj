@@ -67,6 +67,7 @@
     <Compile Include="MotionBlur.cs" />
     <Compile Include="OperatorPruitta.cs" />
     <Compile Include="OperatorSharra.cs" />
+    <Compile Include="PerfectReflector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Right.cs" />

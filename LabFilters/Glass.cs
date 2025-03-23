@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabFilters
 {
-    internal class Glass : MatrixFilter
+    internal class Glass : Filters
     {
         private Random random = new Random();
         protected override Color calculateNewPixelColor(Bitmap sourceImage, int x, int y)

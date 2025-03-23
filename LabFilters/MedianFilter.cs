@@ -37,12 +37,7 @@ namespace LabFilters
             AllG.Sort();
             AllB.Sort();
 
-            // Получаем медианные значения
-            int medianR = AllR[AllR.Count / 2];
-            int medianG = AllG[AllG.Count / 2];
-            int medianB = AllB[AllB.Count / 2];
-
-            return Color.FromArgb(medianR, medianG, medianB);
+            return Color.FromArgb(AllR[AllR.Count() / 2], AllG[AllG.Count() / 2], AllB[AllB.Count() / 2]);
         }
     }
 }

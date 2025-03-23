@@ -122,41 +122,6 @@ namespace LabFilters
             ApplyFilter(new MedianFilter());
         }
 
-        private void влевоToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ApplyFilter(new Left());
-        }
-
-        private void направоToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ApplyFilter(new Right());
-        }
-
-        private void противЧасовойToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ApplyFilter(new RotateLeft());
-        }
-
-        private void поЧасовойToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ApplyFilter(new RotateRight());
-        }
-
-        private void поГоризонталиToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ApplyFilter(new WavesG());
-        }
-
-        private void поВертикалиToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ApplyFilter(new WavesV());
-        }
-
-        private void эффектСтеклаToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ApplyFilter(new Glass());
-        }
-
         private void motionBlurToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ApplyFilter(new MotionBlur());
@@ -219,6 +184,46 @@ namespace LabFilters
             {
                 MessageBox.Show("Нет действий для отмены.");
             }
+        }
+
+        private void идеальныйОтражательToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(new PerfectReflector());
+        }
+
+        private void эффектСтеклаToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ApplyFilter(new Glass());
+        }
+
+        private void влевоToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ApplyFilter(new Left());
+        }
+
+        private void направоToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ApplyFilter(new Right());
+        }
+
+        private void поЧасовойToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ApplyFilter(new RotateRight());
+        }
+
+        private void противЧасовойToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ApplyFilter(new RotateLeft());
+        }
+
+        private void поГоризонталиToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ApplyFilter(new WavesG());
+        }
+
+        private void поВертикалиToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ApplyFilter(new WavesV());
         }
     }
 }
