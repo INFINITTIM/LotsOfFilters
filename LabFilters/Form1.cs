@@ -225,5 +225,55 @@ namespace LabFilters
         {
             ApplyFilter(new WavesV());
         }
+
+        private void светящиесяКраяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(new LuminousEdges());
+        }
+
+        private void дилейшнToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(new Dilation());
+        }
+
+        private void эрозияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(new Erosion());
+        }
+
+        private void опенинToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(new Opening());
+        }
+
+        private void линейноеРастяжениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(new Line());
+        }
+
+        private void серыйМирToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(new GrayWorld());
+        }
+
+        private void клозинToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(new Closing());
+        }
+
+        private void tToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(new TopHat());
+        }
+
+        private void blackHatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(new BlackHat());
+        }
+
+        private void gradToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(new Grad());
+        }
     }
 }
