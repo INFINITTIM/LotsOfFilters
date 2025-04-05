@@ -7,27 +7,31 @@ using System.Threading.Tasks;
 
 namespace LabFilters
 {
-    internal class Erosion : Filters
+    class Erosion : MorphologyFilter
     {
+        public Erosion(bool[,] element = null) : base(element ?? GetStructuringElement(3, "square")) { }
+
         protected override Color calculateNewPixelColor(Bitmap sourceImage, int x, int y)
         {
-            Color minColor = Color.White;
-            int kernelSize = 1; // Размер ядра
+            int minR = 255, minG = 255, minB = 255;
 
-            for (int i = -kernelSize; i <= kernelSize; i++)
+            for (int i = -elementSize; i <= elementSize; i++)
             {
-                for (int j = -kernelSize; j <= kernelSize; j++)
+                for (int j = -elementSize; j <= elementSize; j++)
                 {
                     int newX = Clamp(x + i, 0, sourceImage.Width - 1);
                     int newY = Clamp(y + j, 0, sourceImage.Height - 1);
-                    Color neighborColor = sourceImage.GetPixel(newX, newY);
 
-                    // Выбираем минимальное значение цвета
-                    if (neighborColor.R < minColor.R || neighborColor.G < minColor.G || neighborColor.B < minColor.B)
-                        minColor = neighborColor;
+                    if (structuringElement[i + elementSize, j + elementSize])
+                    {
+                        Color color = sourceImage.GetPixel(newX, newY);
+                        minR = Math.Min(minR, color.R);
+                        minG = Math.Min(minG, color.G);
+                        minB = Math.Min(minB, color.B);
+                    }
                 }
             }
-            return minColor;
+            return Color.FromArgb(minR, minG, minB);
         }
     }
 }

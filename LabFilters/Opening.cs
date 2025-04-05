@@ -8,19 +8,18 @@ using System.Threading.Tasks;
 
 namespace LabFilters
 {
-    internal class Opening : Filters
+    class Opening : MorphologyFilter
     {
+        public Opening(bool[,] element = null) : base(element ?? GetStructuringElement(3, "square")) { }
+
         public override Bitmap processImage(Bitmap sourceImage, BackgroundWorker worker)
         {
-            Erosion erosionFilter = new Erosion();
-            Bitmap erodedImage = erosionFilter.processImage(sourceImage, worker);
-            Dilation dilationFilter = new Dilation();
-            return dilationFilter.processImage(erodedImage, worker);
-        }
 
-        protected override Color calculateNewPixelColor(Bitmap sourceImage, int x, int y)
-        {
-            throw new NotImplementedException(".........");
+            Erosion erosion = new Erosion(structuringElement);
+            Bitmap erodedImage = erosion.processImage(sourceImage, worker);
+
+            DilationFilter dilation = new DilationFilter(structuringElement);
+            return dilation.processImage(erodedImage, worker);
         }
     }
 }

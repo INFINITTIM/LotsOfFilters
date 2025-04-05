@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlackHat.cs" />
     <Compile Include="BlurFIlter.cs" />
     <Compile Include="Brightness.cs" />
     <Compile Include="Closing.cs" />
@@ -63,13 +62,13 @@
     </Compile>
     <Compile Include="GaussianFilter.cs" />
     <Compile Include="Glass.cs" />
-    <Compile Include="Grad.cs" />
     <Compile Include="GrayScaleFilter.cs" />
     <Compile Include="GrayWorld.cs" />
     <Compile Include="InvertFilter.cs" />
     <Compile Include="Left.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="LuminousEdges.cs" />
+    <Compile Include="Math.cs" />
     <Compile Include="MatrixFilter.cs" />
     <Compile Include="MaxFilter.cs" />
     <Compile Include="MedianFilter.cs" />

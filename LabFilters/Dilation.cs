@@ -7,27 +7,31 @@ using System.Threading.Tasks;
 
 namespace LabFilters
 {
-    internal class Dilation : Filters
+    class DilationFilter : MorphologyFilter
     {
+        public DilationFilter(bool[,] element = null) : base(element ?? GetStructuringElement(3, "square")) { }
+
         protected override Color calculateNewPixelColor(Bitmap sourceImage, int x, int y)
         {
-            Color maxColor = Color.Black;
-            int kernelSize = 1; // Размер ядра
+            int maxR = 0, maxG = 0, maxB = 0;
 
-            for (int i = -kernelSize; i <= kernelSize; i++)
+            for (int i = -elementSize; i <= elementSize; i++)
             {
-                for (int j = -kernelSize; j <= kernelSize; j++)
+                for (int j = -elementSize; j <= elementSize; j++)
                 {
                     int newX = Clamp(x + i, 0, sourceImage.Width - 1);
                     int newY = Clamp(y + j, 0, sourceImage.Height - 1);
-                    Color neighborColor = sourceImage.GetPixel(newX, newY);
 
-                    // Выбираем максимальное значение цвета
-                    if (neighborColor.R > maxColor.R || neighborColor.G > maxColor.G || neighborColor.B > maxColor.B)
-                        maxColor = neighborColor;
+                    if (structuringElement[i + elementSize, j + elementSize])
+                    {
+                        Color color = sourceImage.GetPixel(newX, newY);
+                        maxR = Math.Max(maxR, color.R);
+                        maxG = Math.Max(maxG, color.G);
+                        maxB = Math.Max(maxB, color.B);
+                    }
                 }
             }
-            return maxColor;
+            return Color.FromArgb(maxR, maxG, maxB);
         }
     }
 }

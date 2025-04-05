@@ -233,7 +233,7 @@ namespace LabFilters
 
         private void дилейшнToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ApplyFilter(new Dilation());
+            ApplyFilter(new DilationFilter());
         }
 
         private void эрозияToolStripMenuItem_Click(object sender, EventArgs e)
@@ -268,12 +268,12 @@ namespace LabFilters
 
         private void blackHatToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ApplyFilter(new BlackHat());
+            //ApplyFilter(new BlackHat());
         }
 
         private void gradToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ApplyFilter(new Grad());
+            //ApplyFilter(new Grad());
         }
     }
 }

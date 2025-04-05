@@ -8,39 +8,35 @@ using System.Threading.Tasks;
 
 namespace LabFilters
 {
-    internal class TopHat : Filters
+    class TopHat : MorphologyFilter
     {
-        protected Bitmap closingImage;
+        private int scaleFactor = 3; //усиление контраста
+
+        public TopHat(bool[,] element = null) : base(element ?? GetStructuringElement(3, "square")) { }
 
         public override Bitmap processImage(Bitmap sourceImage, BackgroundWorker worker)
         {
-            Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
 
-            Filters filter = new Closing();
-            closingImage = filter.processImage(sourceImage, worker);
+            Opening opening = new Opening(structuringElement);
+            Bitmap openedImage = opening.processImage(sourceImage, worker);
 
-            for (int i = 0; i < sourceImage.Width; i++)
+            Bitmap result = new Bitmap(sourceImage.Width, sourceImage.Height);
+
+            for (int x = 0; x < sourceImage.Width; x++)
             {
-                worker.ReportProgress((int)((float)i / resultImage.Width * 100));
-
-                if (worker.CancellationPending) { return null; }
-
-                for (int j = 0; j < sourceImage.Height; j++)
+                for (int y = 0; y < sourceImage.Height; y++)
                 {
-                    resultImage.SetPixel(i, j, calculateNewPixelColor(sourceImage, i, j));
+                    Color orig = sourceImage.GetPixel(x, y);
+                    Color open = openedImage.GetPixel(x, y);
+
+                    int r = Clamp((orig.R - open.R) * scaleFactor, 0, 255);
+                    int g = Clamp((orig.G - open.G) * scaleFactor, 0, 255);
+                    int b = Clamp((orig.B - open.B) * scaleFactor, 0, 255);
+
+                    result.SetPixel(x, y, Color.FromArgb(r, g, b));
                 }
             }
-            return resultImage;
-        }
-        protected override Color calculateNewPixelColor(Bitmap sourceImage, int x, int y)
-        {
-            Color color = sourceImage.GetPixel(x, y);
-            Color color_closing = closingImage.GetPixel(x, y);
-
-            return Color.FromArgb(
-                        Clamp(color.R - color_closing.R, 0, 255),
-                        Clamp(color.G - color_closing.G, 0, 255),
-                        Clamp(color.B - color_closing.B, 0, 255));
+            return result;
         }
     }
 }
