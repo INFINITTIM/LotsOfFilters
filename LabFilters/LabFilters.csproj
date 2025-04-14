@@ -79,6 +79,7 @@
     <Compile Include="PerfectReflector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomFilter.cs" />
     <Compile Include="Right.cs" />
     <Compile Include="RotateLeft.cs" />
     <Compile Include="RotateRight.cs" />

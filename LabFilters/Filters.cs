@@ -33,5 +33,9 @@ namespace LabFilters
                 return max;
             return value;
         }
+        public Color ApplyFilterToPixel(Bitmap sourceImage, int x, int y)
+        {
+            return calculateNewPixelColor(sourceImage, x, y);
+        }
     }
 }

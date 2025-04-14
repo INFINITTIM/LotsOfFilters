@@ -275,5 +275,10 @@ namespace LabFilters
         {
             //ApplyFilter(new Grad());
         }
+
+        private void рандомФильтрToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(new RandomFilter());
+        }
     }
 }
